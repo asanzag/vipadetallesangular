@@ -1,0 +1,60 @@
+<app-headergeneral></app-headergeneral>
+
+<main class="container-xl mt-5">
+    <h2 class="text-center">{{page_title}}</h2>
+
+    <div class="container-xl">
+        <div class="row d-flex justify-content-center">
+            <div class="col-md-6">
+                <form #figuraForm="ngForm" (ngSubmit)="onSubmit()">
+                    <legend> <i class="bi bi-android"></i> Nueva figura</legend>
+
+                    <div class="mb-3">
+                        <label for="title" class="form-label">Titulo: </label>
+                        <input name="title" id="title" type="text" class="form-control" placeholder="El Titulo" #title="ngModel" [(ngModel)]="figura.title" required />
+                        <!-- pattern sirve para mostrar solo un patrón, en este caso letras -->
+                        <!-- Informa de validación cuando el input contiene required -->
+                        <small *ngIf="!title.valid && title.touched">
+                            El titulo no es válido
+                        </small>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="content" class="form-label">Descripción: </label>
+                        <textarea name="content" class="form-control" rows="3" #content="ngModel" [(ngModel)]="figura.content" required></textarea>
+
+                        <small *ngIf="!content.valid && content.touched">
+                            El contenido no es válido
+                        </small>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="precio" class="form-label">Precio: </label>
+                        <input name="precio" type="number" class="form-control" #precio="ngModel" [(ngModel)]="figura.precio" pattern="{0,99}" required>
+
+                        <small *ngIf="!precio.valid && precio.touched">
+                            El precio no es válido
+                        </small>
+                    </div>
+
+                    <div class="mb-3 text-center">
+                        <div class="col-4 col-md-2 pb-3 mx-auto" *ngIf="is_edit">
+                            <img class="img-fluid" src="{{url + 'get-image/' + figura.image}}" alt="{{figura.title}}" *ngIf="figura.image">
+                            <img class="img-fluid" src="assets/images/default.png" alt="{{figura.title}}" *ngIf="!figura.image">
+                        </div>
+
+                        <angular-file-uploader
+                            [config]="afuConfig"
+                            (ApiResponse)="imageUpload($event)"
+                            >
+                        </angular-file-uploader>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary" [disabled]="figuraForm.invalid"><i class="bi bi-plus-circle-fill"></i>
+                        Enviar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</main>

@@ -1,0 +1,170 @@
+/* You can add global styles to this file, and also import other style files */
+@import "../../../node_modules/bootstrap/scss/bootstrap.scss";
+@import "~bootstrap-icons/font/bootstrap-icons.css";
+
+/* Custom */
+$negro: #262626;
+$blanco: #FFF;
+$cyan: #24b1ce;
+
+
+// Colores
+$primary: $cyan;
+$white: $blanco;
+$dark: $negro;
+
+
+body {
+    /*FUENTES*/
+    font-family: 'Outfit', sans-serif, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue';
+    -webkit-font-smoothing: antialiased;
+    -moz-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: antialiased;
+}
+
+h1, h2, h3 {
+    font-weight: 900;
+    color: $cyan;
+
+}
+h1{
+    font-size: 4.4rem;
+    @media (max-width: 813px){
+        font-size: 4rem;
+    }
+}
+h2{
+    font-size: 3.6rem;
+    @media (max-width: 813px){
+        font-size: 3rem;
+    }
+}
+h3{
+    font-size: 2.6rem;
+    @media (max-width: 813px){
+        font-size: 1.8rem;
+    }
+}
+
+.boton{
+    background-color: $primary;
+    text-decoration: none;
+}
+
+// Links
+$link-color: $white;
+$link-hover-color: $white;
+$link-decoration: none;
+
+// Cards
+$card-border-radius: 0;
+$card-border-width: 0;
+
+// Inputs
+$input-border-radius: 1rem;
+$input-border-color: $dark;
+
+a:hover,
+.active{
+    color: red !important;
+}
+
+.fw-black {
+    font-weight: 900;
+}
+
+/* UI */
+
+.header {
+    
+    // background-color: rgb(160, 194, 194);
+    background-image: url('../images/header1.jpg');
+    position: relative;
+    background-size: cover;
+
+    .header-estrella {
+        display: block;
+        position: absolute;
+        right: 0;
+        bottom: -1px;
+
+        animation-duration: 1s;
+        animation-delay: 0s;
+        animation-timing-function: ease-in-out;
+        animation-name: animarImagen;
+        
+        @media (max-width: 813px){
+            display: none;
+        }
+        /*@include media-breakpoint-up(lg) {
+            
+        }*/
+    }
+}
+
+.navegacion {
+    position: relative;
+    z-index: 1;
+    a{
+        &:hover
+        {
+            background-color: $primary;
+        }
+    }
+}
+.slider {
+    padding-top: 3rem;
+    padding-bottom: 5rem;
+    background-image: url('../images/header1.jpg');
+    background-size: cover;
+    //@include m.background-image('../img/slider_bg.jpg');
+}
+.footer {
+    
+    padding-top: 3rem;
+    padding-bottom: 5rem;
+    background: rgb(160, 194, 194);
+    background-size: cover;
+    background-image: url('../images/header1.jpg');
+    //@include m.background-image('../img/slider_bg.jpg');
+    
+}
+
+.year-green{
+    display: block;
+    background: green;
+    color: white;
+    padding: 5px;
+    width: 100px;
+    text-align: center;
+}
+.year-red{
+    display: block;
+    background: red;
+    color: white;
+    padding: 5px;
+    width: 100px;
+    text-align: center;
+}
+
+/* Animaciones */
+@keyframes animarImagen {
+    0% {
+        opacity: 0;
+        transform: translateX(-10rem);
+    }
+
+    50% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+/* Mixins */
+/*@mixin background-image($url) {
+    background-image: linear-gradient(to right, rgb(0 0 0 / .7), rgb(0 0 0 /.7)), url($url);
+    
+    background-size: cover;
+}*/

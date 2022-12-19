@@ -1,0 +1,47 @@
+<app-headergeneral></app-headergeneral>
+
+<main class="container-xl mt-5">
+    <h2 class="text-center">Contacto</h2>
+
+    <div class="container-xl">
+        <div class="row d-flex justify-content-center">
+            <div class="col-md-6">
+                <form #userForm="ngForm" (ngSubmit)="onSubmit()">
+                    <legend> <i class="bi bi-person-plus-fill"></i> Nuevo Cliente</legend>
+
+                    <div class="mb-3">
+                        <label for="nombre" class="form-label">Nombre: </label>
+                        <input name="nombre" id="nombre" type="text" class="form-control" placeholder="Tu Nombre" #nombre="ngModel" [(ngModel)]="user.nombre" required pattern="[aA-zZ-Z]+"/>
+                        <!-- pattern sirve para mostrar solo un patrón, en este caso letras -->
+                        <!-- Informa de validación cuando el input contiene required -->
+                        <small *ngIf="!nombre.valid && nombre.touched">
+                            El nombre no es válido
+                        </small>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="email" class="form-label">E-mail: </label>
+                        <input name="email" id="email" type="email" class="form-control" placeholder="Tu E-mail" #email="ngModel" [(ngModel)]="user.email" required/>
+
+                        <small *ngIf="!email.valid && email.touched">
+                            El email no es válido
+                        </small>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="descripcion" class="form-label">Cuéntanos tu idea: </label>
+                        <textarea name="descripcion" class="form-control" rows="3" placeholder="Una descripción breve..." #descripcion="ngModel" [(ngModel)]="user.descripcion" required></textarea>
+
+                        <small *ngIf="!descripcion.valid && descripcion.touched">
+                            La descripción no es válida
+                        </small>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary" [disabled]="userForm.invalid"><i class="bi bi-plus-circle-fill"></i>
+                        Solicitar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</main>

@@ -1,0 +1,50 @@
+<app-headergeneral></app-headergeneral>
+
+<main class="container-xl mt-5">
+    <div class="row justify-content-center align-items-center" *ngIf="figura">
+        <div class="col-4 col-md-2">
+            <img class="img-fluid" src="{{url + 'get-image/' + figura.image}}" alt="{{figura.title}}" *ngIf="figura.image">
+            <img class="img-fluid" src="assets/images/default.png" alt="{{figura.title}}" *ngIf="!figura.image">
+        </div>
+        <div class="col-8 col-md-4">
+            <h3 class="text-black fs-4 fw-bold">{{figura.title}}</h3>
+            <p>
+                {{figura.content}}
+            </p>
+            <span>{{figura.date | amLocale: 'es' | amTimeAgo }}</span>
+            <p class="fw-black text-primary fs-3">{{figura.precio}}<i class="bi bi-currency-euro"></i></p>
+            
+            <form class="row">
+                <div class="col-12">
+                    <div class="form-group">
+                        <label class="form-label">Cantidad:</label>
+                        <select class="form-control">
+                            <option value="">-- Seleccione --</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                        </select>
+                    </div>
+                </div>
+
+                <a [routerLink]="['/pruebas/editar', figura._id]" class="btn btn-warning text-black text-uppercase fs-6 mt-4 d-block rounded-pill">Editar</a>
+                <a (click)="delete(figura._id)" class="btn btn-danger text-black text-uppercase fs-6 mt-4 d-block rounded-pill">Borrar</a>
+
+                <!-- <div class="col-12 d-grid">
+                    <input
+                        type="submit"
+                        value="Agregar al carrito"
+                        class="btn btn-primary text-white text-uppercase fs-6 mt-4 d-block"
+                    >
+                </div> -->
+            </form>
+        </div>
+    </div>
+</main>

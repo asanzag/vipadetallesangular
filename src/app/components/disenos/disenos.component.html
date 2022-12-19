@@ -1,0 +1,11 @@
+<app-headergeneral></app-headergeneral>
+
+<main class="container-xl pt-5" *ngIf="disenos"><!-- *ngIf = Crea condición de que si no aparece en components.ts, no lista la condición -->
+    
+    <h2 class="text-center">Todos los diseños</h2>
+
+    <div *ngFor="let diseno of disenos; let i = index;"><!-- *ngFor = Crea condición de incluir un array y sus variables -->
+        <app-diseno [diseno]="diseno"></app-diseno>
+    </div>
+
+</main>

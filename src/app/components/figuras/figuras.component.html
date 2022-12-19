@@ -1,0 +1,23 @@
+<div class="loading" *ngIf="!figuras">
+    <div class="d-flex justify-content-center">
+        <div class="spinner-border text-primary" role="status">
+            <span class="visually-hidden">Cargando...</span>
+        </div>
+    </div>
+</div>
+
+<div class="row mt-5" *ngIf="figuras">
+    <div class="col-md-3 col-lg-6 my-4 row align-items-center" *ngFor="let figura of figuras">
+        <div class="col-4">
+            <img class="img-fluid" src="{{url + 'get-image/' + figura.image}}" alt="{{figura.title}}" *ngIf="figura.image">
+            <img class="img-fluid" src="assets/images/default.png" alt="{{figura.title}}" *ngIf="!figura.image">
+        </div>
+        <div class="col-8">
+            <h3 class="text-black fs-4 fw-bold text-uppercase">{{figura.title}}</h3>
+            <p>{{figura.content}}</p>
+            <span>{{figura.date | amLocale: 'es' | amTimeAgo }}</span>
+            <p class="fw-black text-primary fs-3">{{figura.precio}}<i class="bi bi-currency-euro"></i></p>
+            <a class="btn btn-primary text-white text-uppercase fs-6 mt-4 d-block rounded-pill" [routerLink]="['/pruebas/figura', figura._id]">Ver Producto</a>
+        </div>
+    </div><!-- FIN DISEÑO -->
+</div>
